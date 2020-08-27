@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import { Form,Input,Card,Divider,Button} from 'antd';
 import { GoogleLogin } from 'react-google-login';
 
-const FormLoggin = () =>{
+const FormLoggin = ({setDataUser}) =>{
     const responseGoogle = (response) => {
         console.log(response);
     }

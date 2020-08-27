@@ -8,8 +8,11 @@ import FormLoggin from './FormLoggin.jsx';
 const linkAppstore = 'https://apps.apple.com/app/instagram/id389801252?vt=lo';
 const linkPlaystore = 'https://play.google.com/store/apps/details?id=com.instagram.android&referrer=utm_source%3Dinstagramweb%26utm_campaign%3DloginPage%26ig_mid%3D9E06A507-6240-4C66-8389-287323EA0DEA%26utm_content%3Dlo%26utm_medium%3Dbadge';
 
-const Home = () =>{
-
+const Home = ({dataUser,setDataUser}) =>{
+    console.log(dataUser)
+    if(dataUser){
+        return(<div>wellcome!!!</div>)
+    }
     return(
         <Row justify="center" style={{marginTop:50}}>
             <Col xs={24} sm={20} lg={12}  >
@@ -18,7 +21,7 @@ const Home = () =>{
                         <img style={{width:'100%'}} src="images/loggin.jpg" alt="loggin"/>
                     </Col>
                     <Col xs={24} lg={14} style={{marginTop:50,paddingLeft:30}} >
-                        <FormLoggin/>
+                        <FormLoggin setDataUser={setDataUser}/>
                         <Card style={{display:'flex',justifyContent:'center',marginTop:20}}>
                             ¿No tienes cuenta? <Link to="accounts/emailsignup">Registrate</Link> 
                         </Card>
