@@ -12,14 +12,16 @@ const Router = () =>{
     const [dataUser,setDataUser] = useState(null);
     useEffect(()=>{
         const fetchData = async()=>{
-            const {user} = await axios.get(`${process.env.REACT_APP_HOST}/verify-token`,{headers:{authorization:token_access}});
-            return user;
+            const data = await axios.get(`${process.env.REACT_APP_HOST}/verify-token`,{headers:{authorization:token_access}});
+            const {user} = data.data
+            if(user){
+                setDataUser(user);
+            }else{
+                localStorage.removeItem('token_access');
+            }
         }
-        console.log('token: ',token_access);
         if(token_access){
-            const user = fetchData();
-            console.log('user: ',user)
-            setDataUser(user);
+            fetchData();
         }
     },[]);
     return(
