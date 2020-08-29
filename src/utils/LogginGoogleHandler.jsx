@@ -29,20 +29,20 @@ const LogginGoogleHandler=({setDataUser})=>{
     if(redirect)return <Redirect to="/"/>;
     return(
         <div  style={{display:'flex',justifyContent:'center'}}>
-        <GoogleLogin
-                
-                clientId="519455576665-tsag8jth2r67l6fvd114nmut5fhi0btn.apps.googleusercontent.com"
-                buttonText="Ingresar con google"
-                onSuccess={responseGoogle}
-                onFailure={responseGoogle}
-                cookiePolicy={'single_host_origin'}
-        />
-        <Modal
-                visible={visible}
-                onOk={handleOk}
-            >
-                <p>{messageModal}</p>
-        </Modal>
+            <GoogleLogin
+                    
+                    clientId={process.env.REACT_APP_GOOGLE_ID}
+                    buttonText="Ingresar con google"
+                    onSuccess={responseGoogle}
+                    onFailure={responseGoogle}
+                    cookiePolicy={'single_host_origin'}
+            />
+            <Modal
+                    visible={visible}
+                    onOk={handleOk}
+                >
+                    <p>{messageModal}</p>
+            </Modal>
         </div>
     );
 }
