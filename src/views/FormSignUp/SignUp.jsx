@@ -4,7 +4,7 @@ import LogginGoogleHandler from '../../utils/LogginGoogleHandler.jsx';
 
 import FormSignUp from './FormSignUp.jsx';
 
-const SignUp = ({setDataUser}) =>{
+const SignUp = ({setUserData}) =>{
     return(
         <Row justify='center'>
             <Col xs={12} lg={6}>
@@ -15,9 +15,9 @@ const SignUp = ({setDataUser}) =>{
                     <h2 style={{textAlign:'center',color:'rgb(142,142,142)',fontSize:17}}>
                         Regístrate para ver fotos y videos de tus amigos.
                     </h2>
-                    <LogginGoogleHandler setDataUser={setDataUser}/>
+                    <LogginGoogleHandler setUserData={setUserData}/>
                     <Divider>O</Divider>
-                    <FormSignUp setDataUser={setDataUser}/>
+                    <FormSignUp setUserData={setUserData}/>
                 </Card>
             </Col>
         </Row>

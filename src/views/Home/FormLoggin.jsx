@@ -3,7 +3,7 @@ import {Link,Redirect} from 'react-router-dom';
 import {Alert, Form,Input,Card,Divider,Button} from 'antd';
 import axios from 'axios';
 import LogginGoogleHandler from '../../utils/LogginGoogleHandler.jsx';
-const FormLoggin = ({setDataUser}) =>{
+const FormLoggin = ({setUserData}) =>{
 
     const [reditect,setRedirect] = useState(false);
     const [alertError,setAlertError] = useState(false);
@@ -16,7 +16,7 @@ const FormLoggin = ({setDataUser}) =>{
             setAlertError(true);
         }else{
             localStorage.setItem('token_access',token);
-            setDataUser(user);
+            setUserData(user);
             setRedirect(true);
         }
     }
@@ -40,7 +40,7 @@ const FormLoggin = ({setDataUser}) =>{
             {alertError?<Alert style={{marginTop:10}} message={messageError} type="error" showIcon />:null}
             
             <Divider>o</Divider>
-            <LogginGoogleHandler setDataUser={setDataUser}y/>
+            <LogginGoogleHandler setUserData={setUserData}/>
             <Link style={{display:'flex',justifyContent:'center',marginTop:20}} to='accounts/reset-password'>¿Olvidaste tu contraseña?</Link>
         </Card>
     );

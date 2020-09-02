@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
 import {Row,Col,Card} from 'antd';
 import "antd/dist/antd.css";
 import "./Home.css";
@@ -9,9 +10,9 @@ import InnerHome from './InnerHome/InnerHome.jsx';
 const linkAppstore = 'https://apps.apple.com/app/instagram/id389801252?vt=lo';
 const linkPlaystore = 'https://play.google.com/store/apps/details?id=com.instagram.android&referrer=utm_source%3Dinstagramweb%26utm_campaign%3DloginPage%26ig_mid%3D9E06A507-6240-4C66-8389-287323EA0DEA%26utm_content%3Dlo%26utm_medium%3Dbadge';
 
-const Home = ({dataUser,setDataUser}) =>{
-    if(dataUser){
-        return(<InnerHome/>)
+const Home = ({userData,setUserData}) =>{
+    if(userData){
+        return(<InnerHome/>);
     }
     return(
         <Row justify="center" style={{marginTop:50}}>
@@ -21,7 +22,7 @@ const Home = ({dataUser,setDataUser}) =>{
                         <img style={{width:'100%'}} src="images/loggin.jpg" alt="loggin"/>
                     </Col>
                     <Col xs={24} lg={14} style={{marginTop:50,paddingLeft:30}} >
-                        <FormLoggin setDataUser={setDataUser}/>
+                        <FormLoggin setUserData={setUserData}/>
                         <Card style={{display:'flex',justifyContent:'center',marginTop:20}}>
                             ¿No tienes cuenta? <Link to="accounts/emailsignup">Registrate</Link> 
                         </Card>
@@ -41,4 +42,19 @@ const Home = ({dataUser,setDataUser}) =>{
         
     );
 }
-export default Home;
+const stateToProps=state=>{
+    return({
+        userData:state.userData
+    });
+}
+const dispathToProps = dispath=>{
+    return({
+        setUserData(userData){
+            dispath({
+                type:'UPDATE_USER',
+                userData
+            });
+        }
+    });
+}
+export default connect(stateToProps,dispathToProps)(Home);

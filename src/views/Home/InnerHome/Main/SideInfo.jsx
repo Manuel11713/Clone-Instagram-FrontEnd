@@ -1,22 +1,31 @@
 import React from 'react';
-
+import {Link } from 'react-router-dom';
 import {Avatar,Row,Col} from 'antd';
 import { UserOutlined } from '@ant-design/icons';
+import { connect } from 'react-redux';
 
-const SideInfo = () =>{
+const SideInfo = ({userData}) =>{
     return(
         <div style={{marginTop:20,paddingLeft:20,paddingTop:20}}>
             <Row>
                 <Col xs={6}>
-                    <Avatar size={64} icon={<UserOutlined />} />
+                    <Link to="/profile">
+                        <Avatar size={64} icon={<UserOutlined />} />
+                    </Link>
                 </Col>
                 <Col xs={18} >
-                    <p style={{width:'100%', margin:0}}>nombre de usuario</p>
-                    <p style={{width:'100%',margin:0}}>Jose Manuel Escobedo Lopez</p>
+                    {userData.name===userData.username?null:<p style={{width:'100%', margin:0}}>{userData.username}</p>}
+                    <p style={{width:'100%',margin:0}}>{userData.name}</p>
                 </Col>
             </Row>
         </div>
     );
 };
 
-export default SideInfo;
+const stateToProps=state=>{
+    return({
+        userData:state.userData
+    });
+}
+
+export default connect(stateToProps)(SideInfo);

@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from './Header/Header.jsx';
+import Header from '../../../utils/Header/Header.jsx';
 import './InnerHome.css';
 import Main from './Main/Main.jsx';
 const InnerHome = ()=>{

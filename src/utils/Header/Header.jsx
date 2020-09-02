@@ -1,5 +1,6 @@
 import React from 'react';
 import {Col,Row,Affix,Input} from 'antd';
+import {Link} from 'react-router-dom';
 import IconsHeader from './IconsHeader.jsx';
 
 const Header = () =>{
@@ -12,7 +13,9 @@ const Header = () =>{
                 <Row>
                     <Col xs={6}>
                         <div style={{justifyContent:'center'}}>
-                            <img style={{width:'60%'}} src="images/clonogram.png" alt="logo"/>
+                            <Link to="/">
+                                <img style={{width:'60%'}} src="images/clonogram.png" alt="logo"/>
+                            </Link>
                         </div>
                     </Col>
                     <Col xs={12} style={{height:50}}>

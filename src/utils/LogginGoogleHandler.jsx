@@ -4,7 +4,7 @@ import {Redirect} from 'react-router-dom';
 import axios from 'axios';
 import {Modal} from 'antd';
 
-const LogginGoogleHandler=({setDataUser})=>{
+const LogginGoogleHandler=({setUserData})=>{
     const [redirect,setRedirect] = useState(false);
     const [visible,setVisible] = useState(false);
     const [messageModal,setMessage] = useState('');
@@ -16,7 +16,7 @@ const LogginGoogleHandler=({setDataUser})=>{
         const {user,message,token} = data.data;
         if(user){
             localStorage.setItem('token_access',token);
-            setDataUser(user);
+            setUserData(user);
             setRedirect(true);
         }else{
             setMessage(message);

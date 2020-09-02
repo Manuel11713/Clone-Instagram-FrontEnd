@@ -4,7 +4,7 @@ import {Redirect} from 'react-router-dom';
 import axios from 'axios';
 import './FormSignUp.css';
 
-const FormSignUp = ({setDataUser})=>{
+const FormSignUp = ({setUserData})=>{
     const [visible,setVisible] = useState(false);
     const [messageModal,setMessage] = useState('');
     const [redirect,setRedirect] = useState(false);
@@ -20,7 +20,7 @@ const FormSignUp = ({setDataUser})=>{
             setVisible(true);
         }else{
             localStorage.setItem('token_access',token);
-            setDataUser(user);
+            setUserData(user);
             setRedirect(true);
         }
     };
